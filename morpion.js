@@ -57,8 +57,8 @@ function countScore() {
 function handleGameContainer3x3() {
     gameContainer3x3.classList.remove('hidden')
     btnRestartGame.classList.remove('hidden')
-    scoreBoard.classList.remove('hidden')
     btnBackHome.classList.remove('hidden')
+    scoreBoard.classList.remove('hidden')
     btn3x3.classList.add('hidden')
     btn5x5.classList.add('hidden')
     btn7x7.classList.add('hidden')
@@ -71,6 +71,7 @@ function handleGameContainer3x3() {
 function handleGameContainer5x5() {
     gameContainer5x5.classList.remove('hidden')
     btnRestartGame.classList.remove('hidden')
+    btnBackHome.classList.remove('hidden')
     scoreBoard.classList.remove('hidden')
     btn3x3.classList.add('hidden')
     btn5x5.classList.add('hidden')
@@ -82,6 +83,7 @@ function handleGameContainer5x5() {
 function handleGameContainer7x7() {
     gameContainer7x7.classList.remove('hidden')
     btnRestartGame.classList.remove('hidden')
+    btnBackHome.classList.remove('hidden')
     scoreBoard.classList.remove('hidden')
     btn3x3.classList.add('hidden')
     btn5x5.classList.add('hidden')
