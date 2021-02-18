@@ -7,9 +7,6 @@
 }
 
 .score-board {
-    height: 100px;
-    width: 200px;
-    font-size: 0.75em;
     color: rgba(70, 112, 70, 0.651);
 }
 
@@ -18,8 +15,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    min-width: 100vh;
+    height: 1200px;
+    width: 1500px;
     font-size: xx-large;
 }
 
@@ -74,8 +71,8 @@ h1 {
     justify-content: center;
     align-items: center;
     border: 3px solid lightslategray;
-    min-width: 75vh;
-    height: 75vh;
+    width: 650px;
+    height: 650px;
     padding: 2.5px;
     margin-top: 5px;
    
@@ -98,8 +95,8 @@ h1 {
     justify-content: center;
     align-items: center;
     border: 3px solid lightslategray;
-    min-width: 75vh;
-    height: 75vh;
+    width: 650px;
+    height: 650px;
     padding: 2.5px;
     margin-top: 5px;
 }
@@ -121,8 +118,8 @@ h1 {
     justify-content: center;
     align-items: center;
     border: 3px solid lightslategray;
-    min-width: 75vh;
-    height: 75vh;
+    width: 650px;
+    height: 650px;
     padding: 2.5px;
     margin-top: 5px;
 }
@@ -150,7 +147,7 @@ h1 {
     cursor: grab;
 }
 
-#restart-btn {
+#restart-btn, #home-btn {
     font-size: 1em;
     margin-top: 15px;
     color: rgba(70, 112, 70, 0.651);
