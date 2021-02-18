@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rock+Salt&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Ranchers', cursive;
+}
+
+.score-board {
+    height: 100px;
+    width: 200px;
+    font-size: 0.75em;
+    color: rgba(70, 112, 70, 0.651);
+}
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-width: 100vh;
+    font-size: xx-large;
+}
+
+
+.nav-bar {
+    display: flex;
+    justify-content: flex-end
+}
+
+.btn {
+    margin: 0 5px;
+    border: none;
+    background-color: white;
+    color: lightslategray
+}
+
+.game-btn-1, .game-btn-2, .game-btn-3 {
+    font-size: 2em;
+}
+
+.hidden {
+    display: none;
+}
+
+.rules {
+    height: 13.5vh;
+    min-width: 75vh;
+    margin-bottom: 5px;
+}
+
+h1 {
+    font-size: 1em;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin: 10px 0 10px 0;
+    color: rgba(70, 112, 70, 0.651);
+    
+}
+
+.parag-rules {
+    font-size: small;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+    color: rgba(70, 112, 70, 0.651);
+    font-size: 0.8em;
+}
+
+.morpion-3x3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid lightslategray;
+    min-width: 75vh;
+    height: 75vh;
+    padding: 2.5px;
+    margin-top: 5px;
+   
+}
+
+.case-3x3 {
+    border: 3px solid rgba(70, 112, 70, 0.651);
+    width: 32%;
+    height: 32%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1.5px;
+    margin-right: 1.5px;
+}
+
+.morpion-5x5 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid lightslategray;
+    min-width: 75vh;
+    height: 75vh;
+    padding: 2.5px;
+    margin-top: 5px;
+}
+
+.case-5x5 {
+    border: 3px solid rgba(70, 112, 70, 0.651);
+    width: 19.33%;
+    height: 19.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.5px;
+    margin-left: 1.5px;
+}
+
+.morpion-7x7 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid lightslategray;
+    min-width: 75vh;
+    height: 75vh;
+    padding: 2.5px;
+    margin-top: 5px;
+}
+
+.case-7x7 {
+    border: 3px solid rgba(70, 112, 70, 0.651);
+    width: 13.5%;
+    height: 13.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1.5px;
+    margin-left: 1.5px;
+}
+.caseBis {
+    background-color: rgba(70, 112, 70, 0.651);
+    font-weight: bold;
+    font-size: 1.5em;
+    color: lightslategray;
+    font-family: 'Rock Salt', cursive;
+}
+
+.caseEnter {
+    background-color: rgba(70, 112, 70, 0.651);
+    cursor: grab;
+}
+
+#restart-btn {
+    font-size: 1em;
+    margin-top: 15px;
+    color: rgba(70, 112, 70, 0.651);
+    background-color: white;
+    border: none;
+}
+

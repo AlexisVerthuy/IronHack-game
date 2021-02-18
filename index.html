@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script type='module' src='./morpion.js'></script>
+    <title>3x3 Morpion</title>
+</head>
+
+<body>
+    <!-- <audio autoplay='autoplay' src="Teho.mp3"></audio> -->
+    <header class="header-main">
+        <nav class='nav-bar'>
+            <button class='btn music-btn'><img src="./music.png" alt='music-logo' /></button>
+            <button class='btn volume-btn'><img src="./volume.png" alt='volume-logo' /></button>
+        </nav>
+    </header>
+    <div id="main-container">
+        <div id="score-board-container">
+            <div class="score-board">
+                <table class='board'>
+                    <thead>
+                        <tr>
+                            <th>Players</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="player1Name">Player 1</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td id="player2Name">Player 2</td>
+                            <td>0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class='btn game-btn-1'>3x3 Grid</button>
+        <button class='btn game-btn-2'>5x5 Grid</button>
+        <button class='btn game-btn-3'>7x7 Grid</button>
+        <div id="game-container-3x3" class="hidden">
+            <div class="rules">
+                <h1>Classic Morpion</h1>
+                <p class="parag-rules">Get 3 in a row</p>
+            </div>
+            <div class="morpion-3x3">
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+                <div class="case-3x3"></div>
+            </div>
+        </div>
+        <div id="game-container-5x5" class="hidden">
+            <div class="rules">
+                <h1>5X5 Morpion</h1>
+                <p class="parag-rules">Get 4 in a row</p>
+            </div>
+            <div class="morpion-5x5">
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+                <div class="case-5x5"></div>
+            </div>
+        </div>
+        <div id="game-container-7x7" class="hidden">
+            <div class="rules">
+                <h1>7X7 Morpion</h1>
+                <p class="parag-rules">Get 4 in a row</p>
+            </div>
+            <div class="morpion-7x7">
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+                <div class="case-7x7"></div>
+            </div>
+        </div>
+        <div></div>
+        <button id='restart-btn' class='hidden'>Restart game</button>
+    </div>
+</body>
+
+</html>
