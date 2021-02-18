@@ -10,8 +10,13 @@
     position : relative;
     left : -500px; 
 }    
+
 .score-board {
     color: rgba(70, 112, 70, 0.651);
+}
+
+th, td {
+    width: 150px
 }
 
 #main-container {
@@ -34,11 +39,17 @@
     margin: 0 5px;
     border: none;
     background-color: white;
-    color: lightslategray
+    color: lightslategray;
+    padding: 5px;
+
 }
 
 .game-btn-1, .game-btn-2, .game-btn-3 {
     font-size: 2em;
+}
+
+.clicked {
+    background-color: rgba(70, 112, 70, 0.651);
 }
 
 .hidden {

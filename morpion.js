@@ -1,6 +1,7 @@
 
 //<-------------AUDIO------------->// 
 const audioClick = new Audio('./click.mp3')
+
 const music = document.querySelector('audio')
 const audioVictory = new Audio("./victory.mp3")
 
@@ -46,11 +47,6 @@ function askForPlayersNames() {
     player1Container.innerHTML = `1- ${namePlayer1}`
     player2Container.innerHTML = `2- ${namePlayer2}`
 }
-//<---HANDLE SCORE COUNT--->//
-function countScore() {
-
-
-}
 
 //<---HANDLE GAME CONTAINERS--->// 
 
@@ -92,21 +88,6 @@ function handleGameContainer7x7() {
     gameContainer5x5.classList.add('hidden')
 }
 
-// function cleanSheet() {
-//     if (allGameContainers.className !== 'game-container game-container-hiden') {
-//         window.confirm('Do you really want to change the grid ? This will end your current game !')
-//         cases3x3.forEach(element => element.innerHTML = '')
-//         cases3x3.forEach(element => element.classList.remove('caseBis'))
-//         cases5x5.forEach(element => element.innerHTML = '')
-//         cases5x5.forEach(element => element.classList.remove('caseBis'))
-//         cases7x7.forEach(element => element.innerHTML = '')
-//         cases7x7.forEach(element => element.classList.remove('caseBis'))
-//         turn = 0
-//     } else {
-//         return
-//     }
-// }
-
 //<---HANDLE WHO'S TURN--->// 
 
 let turn = 0
@@ -133,7 +114,7 @@ function handleRestartGame() {
     } else return
 }
 
-function handleBackHome () {
+function handleBackHome() {
     handleRestartGame()
     gameContainer3x3.classList.add('hidden')
     btnRestartGame.classList.add('hidden')
@@ -149,10 +130,18 @@ function handleBackHome () {
 //<---HANDLE CLICK SOUND--->// 
 
 function handleVolumeBtn() {
-    audioClick.muted = true
+    if (audioClick.volume > 0 && audioVictory.volume > 0) {
+        audioClick.volume = 0
+        audioVictory.volume = 0
+        volumeBtn.classList.add('clicked')
+    } else {
+        audioClick.volume = 1;
+        audioVictory.volume = 1;
+        volumeBtn.classList.remove('clicked')
+    }
 }
 
-function playClickSound() {
+function playClickSound() { 
     audioClick.play()
 }
 
@@ -162,9 +151,15 @@ function playVictorySound() {
 
 //<---HANDLE MUSIC--->// 
 
-// function handleMusicBtn() {
-//     music.muted = true
-// }
+function handleMusicBtn() {
+    if (music.volume > 0) {
+        music.volume = 0
+        musicBtn.classList.add('clicked')
+    } else {
+        music.volume = 1;
+        musicBtn.classList.remove('clicked')
+    }
+}
 
 //<---HANDLE MOUSE EVENTS--->// 
 
@@ -181,170 +176,170 @@ function handleMouseLeave() {
 //<---HANDLE CLICKS--->// 
 
 
-btn3x3.addEventListener('click', askForPlayersNames)
-btn3x3.addEventListener('click', handleGameContainer3x3)
-btn5x5.addEventListener('click', askForPlayersNames)
-btn5x5.addEventListener('click', handleGameContainer5x5)
-btn7x7.addEventListener('click', askForPlayersNames)
-btn7x7.addEventListener('click', handleGameContainer7x7)
-btnRestartGame.addEventListener('click', handleRestartGame)
-btnBackHome.addEventListener('click', handleBackHome)
-cases3x3.forEach(element => element.addEventListener('click', playClickSound))
-cases5x5.forEach(element => element.addEventListener('click', playClickSound))
-cases7x7.forEach(element => element.addEventListener('click', playClickSound))
-volumeBtn.addEventListener('click', handleVolumeBtn);
-// musicBtn.addEventListener('click', handleMusicBtn)
+    btn3x3.addEventListener('click', askForPlayersNames)
+    btn3x3.addEventListener('click', handleGameContainer3x3)
+    btn5x5.addEventListener('click', askForPlayersNames)
+    btn5x5.addEventListener('click', handleGameContainer5x5)
+    btn7x7.addEventListener('click', askForPlayersNames)
+    btn7x7.addEventListener('click', handleGameContainer7x7)
+    btnRestartGame.addEventListener('click', handleRestartGame)
+    btnBackHome.addEventListener('click', handleBackHome)
+    cases3x3.forEach(element => element.addEventListener('click', playClickSound))
+    cases5x5.forEach(element => element.addEventListener('click', playClickSound))
+    cases7x7.forEach(element => element.addEventListener('click', playClickSound))
+    volumeBtn.addEventListener('click', handleVolumeBtn);
+    musicBtn.addEventListener('click', handleMusicBtn)
 
 
-//<---HANDLE MOUSE--->// 
+    //<---HANDLE MOUSE--->// 
 
 
-cases3x3.forEach(element => element.addEventListener('mouseenter', handleMouseEnter))
-cases5x5.forEach(element => element.addEventListener('mouseenter', handleMouseEnter))
-cases7x7.forEach(element => element.addEventListener('mouseenter', handleMouseEnter))
-cases3x3.forEach(element => element.addEventListener('mouseleave', handleMouseLeave))
-cases5x5.forEach(element => element.addEventListener('mouseleave', handleMouseLeave))
-cases7x7.forEach(element => element.addEventListener('mouseleave', handleMouseLeave))
+    cases3x3.forEach(element => element.addEventListener('mouseenter', handleMouseEnter))
+    cases5x5.forEach(element => element.addEventListener('mouseenter', handleMouseEnter))
+    cases7x7.forEach(element => element.addEventListener('mouseenter', handleMouseEnter))
+    cases3x3.forEach(element => element.addEventListener('mouseleave', handleMouseLeave))
+    cases5x5.forEach(element => element.addEventListener('mouseleave', handleMouseLeave))
+    cases7x7.forEach(element => element.addEventListener('mouseleave', handleMouseLeave))
 
 
-//<-------------3x3 GAME LOGIC & PROPER FUNCTIONS------------->// 
+    //<-------------3x3 GAME LOGIC & PROPER FUNCTIONS------------->// 
 
 
-function play3x3() {
-    this.classList.add("caseBis")
-    if (!this.innerHTML) this.innerHTML = whoIsNext()
-    weHaveAWinnerAlert = window.setTimeout(weHaveAWinner3x3, 200);
-};
+    function play3x3() {
+        this.classList.add("caseBis")
+        if (!this.innerHTML) this.innerHTML = whoIsNext()
+        weHaveAWinnerAlert = window.setTimeout(weHaveAWinner3x3, 200);
+    };
 
 
-cases3x3.forEach(element => element.addEventListener('click', play3x3))
+    cases3x3.forEach(element => element.addEventListener('click', play3x3))
 
-function weHaveAWinner3x3() {
-    if (cases3x3[0].innerHTML !== '' && cases3x3[0].innerHTML === cases3x3[1].innerHTML && cases3x3[1].innerHTML === cases3x3[2].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[0].innerHTML)
-    } else if (cases3x3[0].innerHTML !== '' && cases3x3[0].innerHTML === cases3x3[3].innerHTML && cases3x3[3].innerHTML === cases3x3[6].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[0].innerHTML)
-    } else if (cases3x3[0].innerHTML !== '' && cases3x3[0].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[8].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[0].innerHTML)
-    } else if (cases3x3[1].innerHTML !== '' && cases3x3[1].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[7].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[1].innerHTML)
-    } else if (cases3x3[2].innerHTML !== '' && cases3x3[2].innerHTML === cases3x3[5].innerHTML && cases3x3[5].innerHTML === cases3x3[8].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[2].innerHTML)
-    } else if (cases3x3[2].innerHTML !== '' && cases3x3[2].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[6].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[2].innerHTML)
-    } else if (cases3x3[3].innerHTML !== '' && cases3x3[3].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[5].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[3].innerHTML)
-    } else if (cases3x3[6].innerHTML !== '' && cases3x3[6].innerHTML === cases3x3[7].innerHTML && cases3x3[7].innerHTML === cases3x3[8].innerHTML) {
-        whoIsTheWinner3x3(cases3x3[6].innerHTML)
-    }
-}
-
-function whoIsTheWinner3x3(winner) {
-    playVictorySound()
-    if (turn % 2 === 0) {
-        alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
-        cases3x3.forEach(element => element.innerHTML = '')
-        cases3x3.forEach(element => element.classList.remove('caseBis'))
-        player2ScoreContainer.innerHTML = scorePlayer2 += 1
-        turn = 0
-    } else {
-        alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
-        cases3x3.forEach(element => element.innerHTML = '')
-        cases3x3.forEach(element => element.classList.remove('caseBis'))
-        player1ScoreContainer.innerHTML = scorePlayer1 += 1
-        turn = 0
+    function weHaveAWinner3x3() {
+        if (cases3x3[0].innerHTML !== '' && cases3x3[0].innerHTML === cases3x3[1].innerHTML && cases3x3[1].innerHTML === cases3x3[2].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[0].innerHTML)
+        } else if (cases3x3[0].innerHTML !== '' && cases3x3[0].innerHTML === cases3x3[3].innerHTML && cases3x3[3].innerHTML === cases3x3[6].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[0].innerHTML)
+        } else if (cases3x3[0].innerHTML !== '' && cases3x3[0].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[8].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[0].innerHTML)
+        } else if (cases3x3[1].innerHTML !== '' && cases3x3[1].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[7].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[1].innerHTML)
+        } else if (cases3x3[2].innerHTML !== '' && cases3x3[2].innerHTML === cases3x3[5].innerHTML && cases3x3[5].innerHTML === cases3x3[8].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[2].innerHTML)
+        } else if (cases3x3[2].innerHTML !== '' && cases3x3[2].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[6].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[2].innerHTML)
+        } else if (cases3x3[3].innerHTML !== '' && cases3x3[3].innerHTML === cases3x3[4].innerHTML && cases3x3[4].innerHTML === cases3x3[5].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[3].innerHTML)
+        } else if (cases3x3[6].innerHTML !== '' && cases3x3[6].innerHTML === cases3x3[7].innerHTML && cases3x3[7].innerHTML === cases3x3[8].innerHTML) {
+            whoIsTheWinner3x3(cases3x3[6].innerHTML)
+        }
     }
 
+    function whoIsTheWinner3x3(winner) {
+        playVictorySound()
+        if (turn % 2 === 0) {
+            alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
+            cases3x3.forEach(element => element.innerHTML = '')
+            cases3x3.forEach(element => element.classList.remove('caseBis'))
+            player2ScoreContainer.innerHTML = scorePlayer2 += 1
+            turn = 0
+        } else {
+            alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
+            cases3x3.forEach(element => element.innerHTML = '')
+            cases3x3.forEach(element => element.classList.remove('caseBis'))
+            player1ScoreContainer.innerHTML = scorePlayer1 += 1
+            turn = 0
+        }
 
 
-}
 
-//<-------------5x5 GAME LOGIC & PROPER FUNCTIONS------------->// 
-
-function play5x5() {
-    if (!this.innerHTML) this.innerHTML = whoIsNext()
-    this.classList.add("caseBis")
-    weHaveAWinnerAlert = window.setTimeout(weHaveAWinner5x5, 100)
-}
-
-cases5x5.forEach(element => element.addEventListener('click', play5x5))
-
-function weHaveAWinner5x5() {
-    if (cases5x5[0].innerHTML !== '' && cases5x5[0].innerHTML === cases5x5[1].innerHTML && cases5x5[1].innerHTML === cases5x5[2].innerHTML && cases5x5[2].innerHTML === cases5x5[3].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[0].innerHTML)
-    } else if (cases5x5[0].innerHTML !== '' && cases5x5[0].innerHTML === cases5x5[5].innerHTML && cases5x5[5].innerHTML === cases5x5[10].innerHTML && cases5x5[10].innerHTML === cases5x5[15].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[0].innerHTML)
-    } else if (cases5x5[0].innerHTML !== '' && cases5x5[0].innerHTML === cases5x5[6].innerHTML && cases5x5[6].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[18].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[0].innerHTML)
-    } else if (cases5x5[1].innerHTML !== '' && cases5x5[1].innerHTML === cases5x5[2].innerHTML && cases5x5[2].innerHTML === cases5x5[3].innerHTML && cases5x5[3].innerHTML === cases5x5[4].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[1].innerHTML)
-    } else if (cases5x5[1].innerHTML !== '' && cases5x5[1].innerHTML === cases5x5[6].innerHTML && cases5x5[6].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[16].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[1].innerHTML)
-    } else if (cases5x5[1].innerHTML !== '' && cases5x5[1].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[19].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[1].innerHTML)
-    } else if (cases5x5[2].innerHTML !== '' && cases5x5[2].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[17].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[2].innerHTML)
-    } else if (cases5x5[3].innerHTML !== '' && cases5x5[3].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[15].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[3].innerHTML)
-    } else if (cases5x5[3].innerHTML !== '' && cases5x5[3].innerHTML === cases5x5[8].innerHTML && cases5x5[8].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[18].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[3].innerHTML)
-    } else if (cases5x5[4].innerHTML !== '' && cases5x5[4].innerHTML === cases5x5[9].innerHTML && cases5x5[9].innerHTML === cases5x5[14].innerHTML && cases5x5[14].innerHTML === cases5x5[19].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[4].innerHTML)
-    } else if (cases5x5[4].innerHTML !== '' && cases5x5[4].innerHTML === cases5x5[8].innerHTML && cases5x5[8].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[16].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[4].innerHTML)
-    } else if (cases5x5[5].innerHTML !== '' && cases5x5[5].innerHTML === cases5x5[6].innerHTML && cases5x5[6].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[8].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[5].innerHTML)
-    } else if (cases5x5[5].innerHTML !== '' && cases5x5[5].innerHTML === cases5x5[10].innerHTML && cases5x5[10].innerHTML === cases5x5[15].innerHTML && cases5x5[15].innerHTML === cases5x5[20].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[5].innerHTML)
-    } else if (cases5x5[5].innerHTML !== '' && cases5x5[5].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[23].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[5].innerHTML)
-    } else if (cases5x5[6].innerHTML !== '' && cases5x5[6].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[8].innerHTML && cases5x5[8].innerHTML === cases5x5[9].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[6].innerHTML)
-    } else if (cases5x5[6].innerHTML !== '' && cases5x5[6].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[16].innerHTML && cases5x5[16].innerHTML === cases5x5[21].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[6].innerHTML)
-    } else if (cases5x5[6].innerHTML !== '' && cases5x5[6].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[18].innerHTML && cases5x5[18].innerHTML === cases5x5[24].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[6].innerHTML)
-    } else if (cases5x5[7].innerHTML !== '' && cases5x5[7].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[22].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[7].innerHTML)
-    } else if (cases5x5[8].innerHTML !== '' && cases5x5[8].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[18].innerHTML && cases5x5[18].innerHTML === cases5x5[23].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[8].innerHTML)
-    } else if (cases5x5[8].innerHTML !== '' && cases5x5[8].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[16].innerHTML && cases5x5[16].innerHTML === cases5x5[20].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[8].innerHTML)
-    } else if (cases5x5[9].innerHTML !== '' && cases5x5[9].innerHTML === cases5x5[14].innerHTML && cases5x5[14].innerHTML === cases5x5[19].innerHTML && cases5x5[19].innerHTML === cases5x5[24].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[9].innerHTML)
-    } else if (cases5x5[9].innerHTML !== '' && cases5x5[9].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[21].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[9].innerHTML)
-    } else if (cases5x5[10].innerHTML !== '' && cases5x5[10].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[13].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[10].innerHTML)
-    } else if (cases5x5[11].innerHTML !== '' && cases5x5[11].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[14].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[11].innerHTML)
-    } else if (cases5x5[15].innerHTML !== '' && cases5x5[15].innerHTML === cases5x5[16].innerHTML && cases5x5[16].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[18].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[15].innerHTML)
-    } else if (cases5x5[16].innerHTML !== '' && cases5x5[16].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[18].innerHTML && cases5x5[18].innerHTML === cases5x5[19].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[16].innerHTML)
-    } else if (cases5x5[20].innerHTML !== '' && cases5x5[20].innerHTML === cases5x5[21].innerHTML && cases5x5[21].innerHTML === cases5x5[22].innerHTML && cases5x5[22].innerHTML === cases5x5[23].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[20].innerHTML)
-    } else if (cases5x5[21].innerHTML !== '' && cases5x5[21].innerHTML === cases5x5[22].innerHTML && cases5x5[22].innerHTML === cases5x5[23].innerHTML && cases5x5[23].innerHTML === cases5x5[24].innerHTML) {
-        whoIsTheWinner5x5(cases5x5[21].innerHTML)
     }
-}
 
-function whoIsTheWinner5x5(winner) {
-    playVictorySound()
-    if (turn % 2 === 0) {
-        alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
-        cases5x5.forEach(element => element.innerHTML = '')
-        cases5x5.forEach(element => element.classList.remove('caseBis'))
-        player2ScoreContainer.innerHTML = scorePlayer2 += 1
-        turn = 0
-    } else {
-        alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
-        cases5x5.forEach(element => element.innerHTML = '')
-        cases5x5.forEach(element => element.classList.remove('caseBis'))
-        player1ScoreContainer.innerHTML = scorePlayer1 += 1
-        turn = 0
+    //<-------------5x5 GAME LOGIC & PROPER FUNCTIONS------------->// 
+
+    function play5x5() {
+        if (!this.innerHTML) this.innerHTML = whoIsNext()
+        this.classList.add("caseBis")
+        weHaveAWinnerAlert = window.setTimeout(weHaveAWinner5x5, 100)
     }
-}
+
+    cases5x5.forEach(element => element.addEventListener('click', play5x5))
+
+    function weHaveAWinner5x5() {
+        if (cases5x5[0].innerHTML !== '' && cases5x5[0].innerHTML === cases5x5[1].innerHTML && cases5x5[1].innerHTML === cases5x5[2].innerHTML && cases5x5[2].innerHTML === cases5x5[3].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[0].innerHTML)
+        } else if (cases5x5[0].innerHTML !== '' && cases5x5[0].innerHTML === cases5x5[5].innerHTML && cases5x5[5].innerHTML === cases5x5[10].innerHTML && cases5x5[10].innerHTML === cases5x5[15].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[0].innerHTML)
+        } else if (cases5x5[0].innerHTML !== '' && cases5x5[0].innerHTML === cases5x5[6].innerHTML && cases5x5[6].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[18].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[0].innerHTML)
+        } else if (cases5x5[1].innerHTML !== '' && cases5x5[1].innerHTML === cases5x5[2].innerHTML && cases5x5[2].innerHTML === cases5x5[3].innerHTML && cases5x5[3].innerHTML === cases5x5[4].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[1].innerHTML)
+        } else if (cases5x5[1].innerHTML !== '' && cases5x5[1].innerHTML === cases5x5[6].innerHTML && cases5x5[6].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[16].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[1].innerHTML)
+        } else if (cases5x5[1].innerHTML !== '' && cases5x5[1].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[19].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[1].innerHTML)
+        } else if (cases5x5[2].innerHTML !== '' && cases5x5[2].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[17].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[2].innerHTML)
+        } else if (cases5x5[3].innerHTML !== '' && cases5x5[3].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[15].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[3].innerHTML)
+        } else if (cases5x5[3].innerHTML !== '' && cases5x5[3].innerHTML === cases5x5[8].innerHTML && cases5x5[8].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[18].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[3].innerHTML)
+        } else if (cases5x5[4].innerHTML !== '' && cases5x5[4].innerHTML === cases5x5[9].innerHTML && cases5x5[9].innerHTML === cases5x5[14].innerHTML && cases5x5[14].innerHTML === cases5x5[19].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[4].innerHTML)
+        } else if (cases5x5[4].innerHTML !== '' && cases5x5[4].innerHTML === cases5x5[8].innerHTML && cases5x5[8].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[16].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[4].innerHTML)
+        } else if (cases5x5[5].innerHTML !== '' && cases5x5[5].innerHTML === cases5x5[6].innerHTML && cases5x5[6].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[8].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[5].innerHTML)
+        } else if (cases5x5[5].innerHTML !== '' && cases5x5[5].innerHTML === cases5x5[10].innerHTML && cases5x5[10].innerHTML === cases5x5[15].innerHTML && cases5x5[15].innerHTML === cases5x5[20].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[5].innerHTML)
+        } else if (cases5x5[5].innerHTML !== '' && cases5x5[5].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[23].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[5].innerHTML)
+        } else if (cases5x5[6].innerHTML !== '' && cases5x5[6].innerHTML === cases5x5[7].innerHTML && cases5x5[7].innerHTML === cases5x5[8].innerHTML && cases5x5[8].innerHTML === cases5x5[9].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[6].innerHTML)
+        } else if (cases5x5[6].innerHTML !== '' && cases5x5[6].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[16].innerHTML && cases5x5[16].innerHTML === cases5x5[21].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[6].innerHTML)
+        } else if (cases5x5[6].innerHTML !== '' && cases5x5[6].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[18].innerHTML && cases5x5[18].innerHTML === cases5x5[24].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[6].innerHTML)
+        } else if (cases5x5[7].innerHTML !== '' && cases5x5[7].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[22].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[7].innerHTML)
+        } else if (cases5x5[8].innerHTML !== '' && cases5x5[8].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[18].innerHTML && cases5x5[18].innerHTML === cases5x5[23].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[8].innerHTML)
+        } else if (cases5x5[8].innerHTML !== '' && cases5x5[8].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[16].innerHTML && cases5x5[16].innerHTML === cases5x5[20].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[8].innerHTML)
+        } else if (cases5x5[9].innerHTML !== '' && cases5x5[9].innerHTML === cases5x5[14].innerHTML && cases5x5[14].innerHTML === cases5x5[19].innerHTML && cases5x5[19].innerHTML === cases5x5[24].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[9].innerHTML)
+        } else if (cases5x5[9].innerHTML !== '' && cases5x5[9].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[21].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[9].innerHTML)
+        } else if (cases5x5[10].innerHTML !== '' && cases5x5[10].innerHTML === cases5x5[11].innerHTML && cases5x5[11].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[13].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[10].innerHTML)
+        } else if (cases5x5[11].innerHTML !== '' && cases5x5[11].innerHTML === cases5x5[12].innerHTML && cases5x5[12].innerHTML === cases5x5[13].innerHTML && cases5x5[13].innerHTML === cases5x5[14].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[11].innerHTML)
+        } else if (cases5x5[15].innerHTML !== '' && cases5x5[15].innerHTML === cases5x5[16].innerHTML && cases5x5[16].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[18].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[15].innerHTML)
+        } else if (cases5x5[16].innerHTML !== '' && cases5x5[16].innerHTML === cases5x5[17].innerHTML && cases5x5[17].innerHTML === cases5x5[18].innerHTML && cases5x5[18].innerHTML === cases5x5[19].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[16].innerHTML)
+        } else if (cases5x5[20].innerHTML !== '' && cases5x5[20].innerHTML === cases5x5[21].innerHTML && cases5x5[21].innerHTML === cases5x5[22].innerHTML && cases5x5[22].innerHTML === cases5x5[23].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[20].innerHTML)
+        } else if (cases5x5[21].innerHTML !== '' && cases5x5[21].innerHTML === cases5x5[22].innerHTML && cases5x5[22].innerHTML === cases5x5[23].innerHTML && cases5x5[23].innerHTML === cases5x5[24].innerHTML) {
+            whoIsTheWinner5x5(cases5x5[21].innerHTML)
+        }
+    }
+
+    function whoIsTheWinner5x5(winner) {
+        playVictorySound()
+        if (turn % 2 === 0) {
+            alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
+            cases5x5.forEach(element => element.innerHTML = '')
+            cases5x5.forEach(element => element.classList.remove('caseBis'))
+            player2ScoreContainer.innerHTML = scorePlayer2 += 1
+            turn = 0
+        } else {
+            alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
+            cases5x5.forEach(element => element.innerHTML = '')
+            cases5x5.forEach(element => element.classList.remove('caseBis'))
+            player1ScoreContainer.innerHTML = scorePlayer1 += 1
+            turn = 0
+        }
+    }
     //<-------------5x5 GAME LOGIC & PROPER FUNCTIONS------------->// 
 
     function play7x7() {
@@ -498,7 +493,7 @@ function whoIsTheWinner5x5(winner) {
     }
 
     function whoIsTheWinner7x7(winner) {
-    playVictorySound()
+        playVictorySound()
         if (turn % 2 === 0) {
             alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
             cases7x7.forEach(element => element.innerHTML = '')
