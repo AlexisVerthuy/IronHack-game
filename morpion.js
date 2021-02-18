@@ -242,14 +242,12 @@ function weHaveAWinner3x3() {
 function whoIsTheWinner3x3(winner) {
     playVictorySound()
     if (turn % 2 === 0) {
-        console.log("hello")
         alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
         cases3x3.forEach(element => element.innerHTML = '')
         cases3x3.forEach(element => element.classList.remove('caseBis'))
         player2ScoreContainer.innerHTML = scorePlayer2 += 1
         turn = 0
     } else {
-        console.log('bye')
         alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
         cases3x3.forEach(element => element.innerHTML = '')
         cases3x3.forEach(element => element.classList.remove('caseBis'))
@@ -334,14 +332,12 @@ function weHaveAWinner5x5() {
 function whoIsTheWinner5x5(winner) {
     playVictorySound()
     if (turn % 2 === 0) {
-        console.log("hello")
         alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
         cases5x5.forEach(element => element.innerHTML = '')
         cases5x5.forEach(element => element.classList.remove('caseBis'))
         player2ScoreContainer.innerHTML = scorePlayer2 += 1
         turn = 0
     } else {
-        console.log('bye')
         alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
         cases5x5.forEach(element => element.innerHTML = '')
         cases5x5.forEach(element => element.classList.remove('caseBis'))
@@ -502,10 +498,19 @@ function whoIsTheWinner5x5(winner) {
     }
 
     function whoIsTheWinner7x7(winner) {
-        playVictorySound()
-        alert(`${winner} is the WINNNNNNNNER!`)
-        cases7x7.forEach(element => element.innerHTML = '')
-        cases7x7.forEach(element => element.classList.remove('caseBis'))
-        turn = 0
+    playVictorySound()
+        if (turn % 2 === 0) {
+            alert(`${player2Container.innerHTML} is the WINNNNNNNNER!`)
+            cases7x7.forEach(element => element.innerHTML = '')
+            cases7x7.forEach(element => element.classList.remove('caseBis'))
+            player2ScoreContainer.innerHTML = scorePlayer2 += 1
+            turn = 0
+        } else {
+            alert(`${player1Container.innerHTML} is the WINNNNNNNNER!`)
+            cases7x7.forEach(element => element.innerHTML = '')
+            cases7x7.forEach(element => element.classList.remove('caseBis'))
+            player1ScoreContainer.innerHTML = scorePlayer1 += 1
+            turn = 0
+        }
     }
 //<-------------END------------->//
