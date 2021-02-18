@@ -115,6 +115,7 @@ function handleRestartGame() {
 }
 
 function handleBackHome() {
+   if (window.confirm('You will be redirected to the home page')) {
     handleRestartGame()
     gameContainer3x3.classList.add('hidden')
     btnRestartGame.classList.add('hidden')
@@ -125,6 +126,7 @@ function handleBackHome() {
     btn7x7.classList.remove('hidden')
     gameContainer5x5.classList.add('hidden')
     gameContainer7x7.classList.add('hidden')
+   } else return
 }
 
 //<---HANDLE CLICK SOUND--->// 

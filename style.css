@@ -9,6 +9,7 @@
 #score-board-container {
     position : relative;
     left : -500px; 
+    top: -180px;
 }    
 
 .score-board {
@@ -25,7 +26,7 @@ th, td {
     justify-content: center;
     align-items: center;
     height: 1200px;
-    width: 1500px;
+    width: 1400px;
     font-size: xx-large;
 }
 
@@ -48,6 +49,21 @@ th, td {
     font-size: 2em;
 }
 
+.game-btn-1 {
+    position: relative;
+    top: -350px;
+}
+
+.game-btn-2 {
+    position: relative;
+    top: -350px;
+}
+
+.game-btn-3 {
+    position: relative;
+    top: -350px;
+}
+
 .clicked {
     background-color: rgba(70, 112, 70, 0.651);
 }
@@ -57,8 +73,7 @@ th, td {
 }
 
 .rules {
-    height: 13.5vh;
-    min-width: 75vh;
+    width: 500px;
     margin-bottom: 5px;
 }
 
@@ -80,14 +95,19 @@ h1 {
     font-size: 0.8em;
 }
 
+#game-container-3x3 {
+    position: relative;
+    top: -300px;
+}
+
 .morpion-3x3 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border: 3px solid lightslategray;
-    width: 650px;
-    height: 650px;
+    width: 500px;
+    height: 500px;
     padding: 2.5px;
     margin-top: 5px;
    
@@ -104,14 +124,20 @@ h1 {
     margin-right: 1.5px;
 }
 
+
+#game-container-5x5 {
+    position: relative;
+    top: -300px;
+}
+
 .morpion-5x5 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border: 3px solid lightslategray;
-    width: 650px;
-    height: 650px;
+    width: 500px;
+    height: 500px;
     padding: 2.5px;
     margin-top: 5px;
 }
@@ -127,14 +153,19 @@ h1 {
     margin-left: 1.5px;
 }
 
+#game-container-7x7 {
+    position: relative;
+    top: -300px;
+}
+
 .morpion-7x7 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     border: 3px solid lightslategray;
-    width: 650px;
-    height: 650px;
+    width: 500px;
+    height: 500px;é
     padding: 2.5px;
     margin-top: 5px;
 }
@@ -170,3 +201,14 @@ h1 {
     border: none;
 }
 
+#restart-btn {
+    POSITION: relative;
+    top: -300px;
+    left: -100px;
+}
+
+#home-btn {
+    POSITION: relative;
+    top: -356px;
+    right: -100px;
+}
