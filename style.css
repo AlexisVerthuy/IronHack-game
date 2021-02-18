@@ -6,6 +6,10 @@
     font-family: 'Ranchers', cursive;
 }
 
+#score-board-container {
+    position : relative;
+    left : -500px; 
+}    
 .score-board {
     color: rgba(70, 112, 70, 0.651);
 }
