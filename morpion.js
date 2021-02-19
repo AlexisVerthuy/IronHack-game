@@ -101,7 +101,7 @@ function whoIsNext() {
 }
 
 
-//<---HANDLE RESTART GAME--->// 
+//<---HANDLE CLEAN SHEET--->// 
 
 function handleCleanSheet(){
     cases3x3.forEach(element => element.innerHTML = '')
@@ -130,6 +130,8 @@ function handleRestartGame() {
         player2ScoreContainer.innerHTML = scorePlayer2
     } else return
 }
+
+//<---HANDLE BACK HOME--->// 
 
 function handleBackHome() {
    if (window.confirm('You will be redirected to the home page')) {
