@@ -31,6 +31,7 @@ const btn5x5 = document.querySelector('.game-btn-2')
 const btn7x7 = document.querySelector('.game-btn-3')
 const btnRestartGame = document.querySelector('#restart-btn')
 const btnBackHome = document.querySelector('#home-btn')
+const btnClean = document.querySelector('#clean-btn')
 
 //<-------------CASES  SELECTORS------------->// 
 const cases3x3 = document.querySelectorAll('.case-3x3')
@@ -54,6 +55,7 @@ function handleGameContainer3x3() {
     gameContainer3x3.classList.remove('hidden')
     btnRestartGame.classList.remove('hidden')
     btnBackHome.classList.remove('hidden')
+    btnClean.classList.remove('hidden')
     scoreBoard.classList.remove('hidden')
     btn3x3.classList.add('hidden')
     btn5x5.classList.add('hidden')
@@ -68,6 +70,7 @@ function handleGameContainer5x5() {
     gameContainer5x5.classList.remove('hidden')
     btnRestartGame.classList.remove('hidden')
     btnBackHome.classList.remove('hidden')
+    btnClean.classList.remove('hidden')
     scoreBoard.classList.remove('hidden')
     btn3x3.classList.add('hidden')
     btn5x5.classList.add('hidden')
@@ -80,6 +83,7 @@ function handleGameContainer7x7() {
     gameContainer7x7.classList.remove('hidden')
     btnRestartGame.classList.remove('hidden')
     btnBackHome.classList.remove('hidden')
+    btnClean.classList.remove('hidden')
     scoreBoard.classList.remove('hidden')
     btn3x3.classList.add('hidden')
     btn5x5.classList.add('hidden')
@@ -94,6 +98,19 @@ let turn = 0
 function whoIsNext() {
     turn++
     return turn % 2 === 0 ? 'O' : 'X'
+}
+
+
+//<---HANDLE RESTART GAME--->// 
+
+function handleCleanSheet(){
+    cases3x3.forEach(element => element.innerHTML = '')
+        cases3x3.forEach(element => element.classList.remove('caseBis'))
+        cases5x5.forEach(element => element.innerHTML = '')
+        cases5x5.forEach(element => element.classList.remove('caseBis'))
+        cases7x7.forEach(element => element.innerHTML = '')
+        cases7x7.forEach(element => element.classList.remove('caseBis'))
+        turn = 0
 }
 
 //<---HANDLE RESTART GAME--->// 
@@ -186,6 +203,7 @@ function handleMouseLeave() {
     btn7x7.addEventListener('click', handleGameContainer7x7)
     btnRestartGame.addEventListener('click', handleRestartGame)
     btnBackHome.addEventListener('click', handleBackHome)
+    btnClean.addEventListener('click', handleCleanSheet)
     cases3x3.forEach(element => element.addEventListener('click', playClickSound))
     cases5x5.forEach(element => element.addEventListener('click', playClickSound))
     cases7x7.forEach(element => element.addEventListener('click', playClickSound))

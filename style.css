@@ -193,7 +193,7 @@ h1 {
     cursor: grab;
 }
 
-#restart-btn, #home-btn {
+#restart-btn, #home-btn, #clean-btn {
     font-size: 1em;
     margin-top: 15px;
     color: rgba(70, 112, 70, 0.651);
@@ -203,12 +203,18 @@ h1 {
 
 #restart-btn {
     POSITION: relative;
-    top: -300px;
-    left: -100px;
+    top: -356px;
+    left: -167px;
 }
 
 #home-btn {
     POSITION: relative;
-    top: -356px;
-    right: -100px;
+    top: -412px;
+    right: -18px;
+}
+
+#clean-btn {
+    POSITION: relative;
+    top: -298px;
+    right: -182px;
 }
