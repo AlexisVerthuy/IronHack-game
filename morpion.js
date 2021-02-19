@@ -138,6 +138,7 @@ function handleBackHome() {
     btnRestartGame.classList.add('hidden')
     scoreBoard.classList.add('hidden')
     btnBackHome.classList.add('hidden')
+    btnClean.classList.add('hidden')
     btn3x3.classList.remove('hidden')
     btn5x5.classList.remove('hidden')
     btn7x7.classList.remove('hidden')
